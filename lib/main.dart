@@ -34,7 +34,7 @@ class DailyPlannerHomePageState extends State<DailyPlannerHomePage> {
     _loadTasks(); // memuat data saat pertama kali aplikasi dibuka
   }
 
-  // Memuat data dari SharedPreferences
+  // memuat data dari SharedPreferences
   void _loadTasks() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
@@ -42,7 +42,7 @@ class DailyPlannerHomePageState extends State<DailyPlannerHomePage> {
     });
   }
 
-  // Menyimpan data ke SharedPreferences
+  // menyimpan data ke SharedPreferences
   void _saveTasks() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setStringList('tasks', _tasks);
@@ -70,12 +70,12 @@ class DailyPlannerHomePageState extends State<DailyPlannerHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold( // Scaffold dengan AppBar & Container (Image)
+    return Scaffold( // dengan AppBar & Container (Image)
       appBar: AppBar(
         title: Text('What Will You Do Today?'),
         centerTitle: true,
       ),
-      body: OrientationBuilder( // Layout: Responsive dengan Orientation (Row & Column)
+      body: OrientationBuilder(
         builder: (context, orientation) {
           return Padding(
             padding: const EdgeInsets.all(16.0),
@@ -111,7 +111,7 @@ class DailyPlannerHomePageState extends State<DailyPlannerHomePage> {
                       return Card(
                         child: ListTile(
                           title: Text(_tasks[index]),
-                          trailing: IconButton(
+                          trailing: IconButton( // icon delete task
                             icon: Icon(Icons.delete),
                             onPressed: () => _removeTask(index),
                           ),
